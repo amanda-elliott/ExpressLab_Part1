@@ -16,11 +16,12 @@ export class AppComponent {
 
     this.cartService.getAllItems().subscribe(response => {
       this.items = response;
-    });
+      console.log(this.items);
+      });
   }
 
-  addNewItem(newItem) {
-    this.cartService.addItem(newItem).subscribe(response => {
+  addNewItem(form) {
+    this.cartService.addItem({ ...form.value}).subscribe(response => {
       this.items = response;
     });
   }
@@ -31,10 +32,14 @@ export class AppComponent {
     });
   }
 
-  updateItem(id, newItem) {
-    this.cartService.updateItem(id, newItem).subscribe(response => {
+  updateItem(item) {
+    this.cartService.updateItem(item).subscribe(response => {
       this.items = response;
     });
+  }
+
+  toggleForm(index) {
+    this.items[index].beingUpdated = !this.items[index].beingUpdated;
   }
 
 }

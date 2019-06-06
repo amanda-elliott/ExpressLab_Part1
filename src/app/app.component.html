@@ -1,15 +1,67 @@
-<body>  
-  <h1>Shopping Cart</h1>
+<body>
+  <h1>Inventory</h1>
+  <!-- Yes, I'm calling this an inventory list because no merchant would let their customers set their price :D -->
 
-  
+  <section class="addSection">
+    <h2>Add New Item</h2>
+    <form class="addForm" #addForm="ngForm" (ngSubmit)="addNewItem(addForm)">
+      <label for="">Product</label>
+      <input class="addInput" type="text" name="product" ngModel>
 
-  <div *ngFor="let item of items; index as i">
-    <p>{{ item.id }}</p>
-    <p>{{ item.product }}</p>
-    <p>{{ item.price }}</p>
-    <p>{{ item.quantity }}</p>
-    <button (click)="deleteItem(item.id)"> X </button>
+      <label for="">Price</label>
+      <input class="addInput" type="text" name="price" ngModel>
+
+      <label for="">Quantity</label>
+      <input class="addInput" type="text" name="quantity" ngModel>
+
+      <button class="addBtn">Add</button>
+    </form>
+  </section>
+
+  <div class="labelDiv">
+    <p>Index</p>
+    <p>Product</p>
+    <p>Price</p>
+    <p>Quantity</p>
+    <p>Edit</p>
+    <p>Delete</p>
   </div>
 
-</body>
+  <section *ngFor="let item of items; index as i">
+    <div class="itemDiv" *ngIf="!item.beingUpdated">
+      <p>{{ item.id }}</p>
+      <p>{{ item.product }}</p>
+      <p>{{ item.price }}</p>
+      <p>{{ item.quantity }}</p>
+      <button class="itemBtn" (click)="toggleForm(i)">Edit</button>
+      <button class="itemBtn" (click)="deleteItem(item.id)">Delete</button>
+    </div>
 
+    <form class="editForm" *ngIf="item.beingUpdated" #updateForm="ngForm"
+      (ngSubmit)="[updateItem(item), toggleForm(i)]">
+      <div class="formDiv">
+        <label for="">Product</label>
+        <input type="text" name="product" [(ngModel)]="item.product">
+      </div>
+
+      <div class="formDiv">
+        <label for="">Price</label>
+        <input type="text" name="price" [(ngModel)]="item.price">
+      </div>
+
+      <div class="formDiv">
+        <label for="">Quantity</label>
+        <input type="text" name="quantity" [(ngModel)]="item.quantity">
+      </div>
+
+      <div class="formDiv">
+        <button class="itemBtn">Update</button>
+      </div>
+    </form>
+
+  </section>
+
+
+
+
+</body>

@@ -1,4 +1,63 @@
-div {
-    border: 1px solid black;
-    margin: 20px;
+body {
+    margin: 0;
+    padding: 50px;   
+}
+
+h1, .addSection {
+    margin-bottom: 50px;
+}
+
+h1, h2, .addForm, .labelDiv {
+    color: white;
+}
+
+.addSection {
+    border: 1px solid rgba(255, 255, 255, .5);
+}
+
+.addInput {
+    margin-right: 30px;
+}
+
+.addBtn {
+    width: 175px;
+    margin-left: 30px;
+}
+
+form, .itemDiv, .formDiv, .labelDiv {
+    display: flex;
+}
+
+.formDiv {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+button {
+    background-color: white;
+}
+
+.itemDiv, input, button, form, .addSection, .labelDiv {
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.itemDiv, .editForm {
+    background-color: rgba(255, 255, 255, .5);
+    margin-top: 20px;
+    justify-content: space-evenly;
+}
+
+p {
+    margin: 5px;
+    flex:1
+}
+
+.itemBtn {
+    flex: 1;
+    width: 175px;
+}
+
+label {
+    margin-right: 10px;
 }
